@@ -1,36 +1,11 @@
-
-
-import { createBrowserRouter, RouterProvider } from 'react-router';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Jobs from './pages/Jobs';
-import About from './pages/About';
-import NotFound from './pages/NotFound';
+import { RouterProvider } from 'react-router';
+import router from './routes/router';
+import ThemeProvider from './context/ThemeProvider';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          index: true,
-          element: <Home />
-        },
-        {
-          path: 'jobs',
-          element: <Jobs />
-        },
-        {
-          path: 'about',
-          element: <About />
-        },
-      ],
-      errorElement: <NotFound />
-    } 
-  ]);
-
-  return <RouterProvider router={router} />;
+  return <ThemeProvider>
+    <RouterProvider router={router} />
+  </ThemeProvider>;
 }
 
 export default App;
